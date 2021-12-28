@@ -3,7 +3,8 @@ import express from "express";
 import path from "path";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import { PROJECT_ROOT_DIR } from "./constants";
+import { PROJECT_ROOT_DIR, __prod__ } from "./constants";
+import { Appointment, Doctor } from "./entities";
 import routes from "./routes";
 
 const main = async () => {
@@ -14,10 +15,10 @@ const main = async () => {
   const conn = await createConnection({
     type: `sqlite`,
     database: `${PROJECT_ROOT_DIR}/data/database.sqlite`,
-    synchronize: true,
+    synchronize: !__prod__,
     logging: true,
     migrations: [path.join(__dirname, "./migrations/*")],
-    entities: [],
+    entities: [Appointment, Doctor],
   });
   await conn.runMigrations();
 
