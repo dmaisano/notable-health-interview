@@ -1,8 +1,15 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Doctor } from ".";
 
 @Entity()
-export class Appointment {
+export class Appointment extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -22,5 +29,6 @@ export class Appointment {
   doctorId: number;
 
   @ManyToOne(() => Doctor, (doctor) => doctor.appointments)
+  @JoinColumn({ name: `doctorId` })
   doctor: Doctor;
 }

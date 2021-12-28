@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --watch 'src/**/*.ts' --respawn src/server.ts",
-    "start": "ts-node-dev --watch 'src/**/*.ts' --respawn src/server.ts"
+    "start": "ts-node-dev src/server.ts"
   },
   "keywords": [],
   "author": "",
