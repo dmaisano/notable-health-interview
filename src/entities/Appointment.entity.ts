@@ -23,7 +23,7 @@ export class Appointment extends BaseEntity {
   time: Date;
 
   @Column({ nullable: false })
-  kind: `New Patient` | `Follow-up`; // could use an int or enum here, for simplicity I'm going to stick with a string
+  kind: string; // could use an int or enum here, for simplicity I'm going to stick with a string
 
   @Column()
   doctorId: number;

@@ -34,9 +34,12 @@ class AppointmentService {
     patientFirstName: string;
     patientLastName: string;
     time: Date;
-    kind: `New Patient` | `Follow-up`;
+    kind: string;
   }): Promise<Appointment | null | { error: string }> {
     const { doctorId, kind, patientFirstName, patientLastName, time } = payload;
+
+    if (kind !== `New Patient` && kind !== `Follow-up`)
+      return { error: `appt type must be either 'New Patient' or 'Follow-up'` };
 
     const isValidTime = time.getMinutes() % 15 === 0;
 
