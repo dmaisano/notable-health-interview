@@ -1,3 +1,26 @@
-GET http://localhost:3001/api/doctor
+# Get a list of all doctors
+GET http://localhost:3001/api/doctors
 
 ###
+
+# Get a list of all appointments for a particular doctor and particular day
+GET http://localhost:3001/api/appointments/?doctorId=1&date=12-28-2021
+
+###
+
+# Delete an existing appointment from a doctor's calendar
+DELETE http://localhost:3001/api/appointments/2
+
+###
+
+# Add a new appointment to a doctor's calendar
+POST http://localhost:3001/api/appointments/create
+content-type: application/json
+
+{
+	"doctorId": 1,
+	"patientFirstName": "Frank",
+	"patientLastName": "Ocean",
+	"time": "12-28-2021 14:15",
+	"kind": "Follow-up"
+}

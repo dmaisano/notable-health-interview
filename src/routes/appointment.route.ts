@@ -32,7 +32,7 @@ router.get(`/`, async (req, res) => {
     );
 
     if (appts.length) {
-      return res.json({ appts });
+      return res.json(appts);
     }
 
     return res.status(404).json({ msg: `no appts found` });
